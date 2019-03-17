@@ -98,14 +98,13 @@ func main() {
 		toSize, err := strconv.Atoi(toSize)
 
 		if horizontal && toSize < im.Width {
-			fmt.Println("уменьшаем ширину")
+			//fmt.Println("уменьшаем ширину")
 			var steps = ((im.Width - toSize) / 500)
 			var proportion = (float64(im.Width) / float64(im.Height))
 			fmt.Println(proportion)
 			if steps > 0 {
 				curSize := im.Width - 500
 				for i := 0; i <= steps; i++ {
-					fmt.Println(toSize, curSize)
 					if curSize > toSize {
 						src = imaging.Resize(src, curSize, 0, imaging.Lanczos)
 						src = imaging.Sharpen(src, 0.2)
@@ -125,14 +124,12 @@ func main() {
 		}
 
 		if !horizontal && toSize < im.Height {
-			fmt.Println("уменьшаем высоту")
+			//fmt.Println("уменьшаем высоту")
 			var steps = ((im.Height - toSize) / 500)
 			var proportion = (float64(im.Height) / float64(im.Width))
-			fmt.Println(proportion)
 			if steps > 0 {
 				curSize := im.Height - 500
 				for i := 0; i <= steps; i++ {
-					fmt.Println(toSize, curSize)
 					if curSize > toSize {
 						src = imaging.Resize(src, 0, curSize, imaging.Lanczos)
 						src = imaging.Sharpen(src, 0.2)
